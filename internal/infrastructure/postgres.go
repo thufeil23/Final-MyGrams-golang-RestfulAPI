@@ -14,6 +14,11 @@ type GormConnect struct {
 	master *gorm.DB
 }
 
+// gormConnection is an interface for GormConnect
+type gormConnection interface {
+	GetConnection() *gorm.DB
+}
+
 // NewGormConnect is a constructor for GormConnect
 func NewGormConnect() (*GormConnect, error) {
 	db, err := ConnectDB()

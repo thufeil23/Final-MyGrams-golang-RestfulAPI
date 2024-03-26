@@ -41,7 +41,7 @@ create table comments(
         references users(id)
 );
 
-create table social_medias(
+create table socials(
     id UUID primary key default uuid_generate_v4(),
     name varchar(255) not null, 
     url text not null, 
@@ -49,7 +49,7 @@ create table social_medias(
     created_at timestamp not null default now(),
     updated_at timestamp not null default now(),
     deleted_at timestamp, 
-    constraint fk_social_medias_user_id 
+    constraint fk_socials_user_id 
         foreign key (user_id) 
         references users(id)
 );

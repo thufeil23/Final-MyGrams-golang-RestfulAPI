@@ -23,7 +23,10 @@ func NewUserRouter(ur *gin.RouterGroup, handler handler.UserHandler) UserRouter 
 
 // MountRoutes is a method for user router
 func (u *userRouter) MountRoutes() {
-	u.ur.GET("/users/:id", u.handler.GetUsersByID)
-	u.ur.POST("/users", u.handler.RegisterUser)
-	u.ur.GET("/users", u.handler.GetUsers)
+	u.ur.POST("/register", u.handler.RegisterUser)
+	u.ur.POST("/login", u.handler.LoginUser)
+	u.ur.GET("/", u.handler.GetUsers)
+	u.ur.GET("/:id", u.handler.GetUsersByID)
+	u.ur.PUT("/:id", u.handler.UpdateUser)
+	u.ur.DELETE("/:id", u.handler.DeleteUser)
 }

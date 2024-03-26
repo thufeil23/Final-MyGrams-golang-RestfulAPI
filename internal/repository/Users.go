@@ -74,11 +74,12 @@ func (u userRepository) CreateUsers(ctx context.Context, user models.User) (mode
 	return user, nil
 }
 
-
 // UpdateUsers updates a user in the database
 func (u userRepository) UpdateUsers(ctx context.Context, user models.User) (models.User, error) {
 	db := u.db.GetConnection()
-	if err := db.Save(&user).Error; err != nil {
+	if err := db.
+		Save(&user).
+		Error; err != nil {
 		return models.User{}, err
 	}
 	return user, nil
